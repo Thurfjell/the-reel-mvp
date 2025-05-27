@@ -2,10 +2,15 @@
 
 A fun mini project using the divine stack `go;htmx;tailwind;sqlite`.
 
-Requires an access token from [the movies db](https://www.themoviedb.org/)
+You need to install go. Project version is 1.24.2
+
+Also requires an access token from [the movies db](https://www.themoviedb.org/)
+
+<br><hr>
 
 In fun mini projects, it's okay to use as few libraries as possible.
 All the tailwind is gratefully generated through promptin free, but ever so courteous ChatGPT!
+<hr><br>
 
 ## How to play
 
