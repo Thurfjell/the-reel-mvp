@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Don't think just watch</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/htmx.org@2.0.4"></script>
+    <style>
+      .movie-hover:hover .overlay {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @keyframes fadeInUp {
+        0% {
+          opacity: 0;
+          transform: translateY(5px) scale(0.97);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+      .animate-fadeInUp {
+        animation: fadeInUp 0.2s ease-out forwards;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-900 text-white font-sans">
+    <header
+      class="bg-gradient-to-r from-purple-700 to-pink-600 text-white shadow-lg sticky top-0 z-50"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center"
+      >
+        <h1 class="text-3xl font-extrabold tracking-wider uppercase">
+          🎞️ The reel MVPs
+        </h1>
+        <div class="relative w-full max-w-sm">
+          <input
+            type="search"
+            name="search"
+            placeholder="Search if you must.."
+            hx-get="/movie-list"
+            hx-trigger="keyup changed delay:500ms"
+            hx-target="#movie-list"
+            hx-swap="innerHTML"
+            class="w-full py-2 pl-5 pr-10 rounded-full bg-black/30 text-white placeholder-gray-300 border border-pink-500 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+          />
+          <div
+            class="absolute right-4 top-2.5 text-pink-300 pointer-events-none"
+          >
+            🔍
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-12">
+      <section
+        id="movie-list"
+        hx-get="/movie-list"
+        hx-swap="innerHTML"
+        hx-trigger="load"
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8"
+      ></section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+**/tmp/
+**/node_modules/
+
+*.sqlite
+*.sqlite3
+*.db
+*.db3
+
+// very pro, i know 8-)
+testar*
