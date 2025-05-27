@@ -1,14 +1,12 @@
 package movie
 
 import (
-	"bytes"
 	"context"
 	"embed"
 	"html/template"
 	"math"
 	"movez/internal/api"
 	"net/http"
-	"sync"
 )
 
 //go:embed templates/*
@@ -25,7 +23,6 @@ type HandlerData interface {
 type Handler struct {
 	Template *template.Template
 	data     HandlerData
-	bufPool  *sync.Pool
 }
 
 func (h *Handler) Routes() []api.RouteMeta {
@@ -46,11 +43,6 @@ func NewHandler(data HandlerData) (handler *Handler, err error) {
 	handler = &Handler{
 		Template: template,
 		data:     data,
-		bufPool: &sync.Pool{
-			New: func() any {
-				return new(bytes.Buffer)
-			},
-		},
 	}
 	return
 }
